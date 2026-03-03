@@ -9,6 +9,7 @@ import MainRoot from './components/MainRoot/MainRoot.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import NotFound from './components/pages/NotFound.jsx';
 import Login from './components/pages/Login.jsx';
+import SignUp from './components/pages/SignUp.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "cart", Component: Cart },
       { path: "*", Component: NotFound },
       { path: "/login", Component: Login },
+      { path: "/signup", Component: SignUp },
       
     ],
   },

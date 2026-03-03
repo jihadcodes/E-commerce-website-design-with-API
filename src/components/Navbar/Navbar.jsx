@@ -52,7 +52,7 @@ const Navbar = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><a href="">Contact</a></li>
                         <li><a href="">About</a></li>
-                        <li><a href="">Sign Up</a></li>
+                        <li><Link to="/signup">Sign Up</Link></li>
                     </ul>
                 </div>
                 <div className="w-[30%] flex justify-center items-center ">
