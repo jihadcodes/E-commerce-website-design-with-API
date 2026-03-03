@@ -31,3 +31,7 @@
  .button{
     @apply py-4 px-12 bg-[#DB4444] text-[16px] leading-6 font-poppins font-medium rounded-sm text-[#FAFAFA] cursor-pointer
  }
+
+  .form-input{
+    @apply text-[16px] w-full text-[#000000] font-poppins font-normal leading-6 outline-none pb-2 border-b  border-[rgba(219,68,68,0.68)] mb-10
+ }
