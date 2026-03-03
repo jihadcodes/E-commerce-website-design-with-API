@@ -64,13 +64,13 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-3 justify-end items-end'>
                         <div className='w-8 h-8 flex justify-center items-center group rounded-full hover:bg-red-500  '>
-                            <Link to="Wishlist"><IoHeartOutline className='text-[18px] cursor-pointer text-[#000000] group hover:text-white'  /></Link>
+                            <Link to="Wishlist"><IoHeartOutline className='text-[18px] cursor-pointer text-[#000000] group-hover:text-white'  /></Link>
                         </div>
                         <div className='w-8 h-8 flex justify-center items-center group rounded-full hover:bg-red-500 '>
-                            <Link to="Cart"><IoCartOutline className=' cursor-pointer text-[18px] text-[#000000] group  hover:text-white'  /></Link>
+                            <Link to="Cart"><IoCartOutline className=' cursor-pointer text-[18px] text-[#000000] group-hover:text-white'  /></Link>
                         </div>
                         <div className='w-8 h-8 flex justify-center items-center group rounded-full hover:bg-red-500 '>
-                            <FiUser className='text-[18px] text-[#000000] group hover:text-white' />
+                            <FiUser className='text-[18px] text-[#000000] group-hover:text-white' />
                         </div>
                     </div>
                 </div>

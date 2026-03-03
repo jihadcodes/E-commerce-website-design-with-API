@@ -6,6 +6,7 @@ import Explore from './components/Explore/Explore'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import NewArrival from './components/NewArrival/NewArrival'
+import NotFound from './components/pages/NotFound'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
      <Category></Category>
      <BestSellimg></BestSellimg>
      <Explore></Explore>
+     <NotFound/>
      
     </>
   )
