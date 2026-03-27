@@ -53,6 +53,8 @@ const Navbar = () => {
                         <li><a href="">Contact</a></li>
                         <li><a href="">About</a></li>
                         <li><Link to="/signup">Sign Up</Link></li>
+                        
+                        
                     </ul>
                 </div>
                 <div className="w-[30%] flex justify-center items-center ">

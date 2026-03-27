@@ -19,7 +19,7 @@ function App() {
      <Category></Category>
      <BestSellimg></BestSellimg>
      <Explore></Explore>
-     <NotFound/>
+     
      
     </>
   )
