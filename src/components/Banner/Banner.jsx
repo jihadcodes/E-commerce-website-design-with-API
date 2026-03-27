@@ -37,7 +37,7 @@ const Banner = () => {
                 </div>
                 <div className="w-[80%] pt-10">
                   <Slider {...settings}>
-                  <div className="slider bg-[#000]">
+                  <div className="slider bg-[rgb(0,0,0)]">
                     <div>
                     <div className="flex">
                       <div className="w-[40%] pt-[58px] ps-16 ">
