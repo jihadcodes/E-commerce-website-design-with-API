@@ -11,6 +11,7 @@ import NotFound from './components/pages/NotFound.jsx';
 import Login from './components/pages/Login.jsx';
 import SignUp from './components/pages/SignUp.jsx';
 import CheckOut from './components/pages/CheckOut.jsx';
+import ProductDetails from './components/pages/ProductDeatils.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/signup", Component: SignUp },
       { path: "/*", Component: NotFound },
       { path: "/checkout", Component: CheckOut },
+      { path: "/productdetails", Component: ProductDetails },
       
     ],
   },
