@@ -166,7 +166,36 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
-             
+             <div className="grid grid-cols-4 gap-[30px] pt-15">
+                {
+                    releted_products.map(releted => (
+                        <div className='product_item'>
+                            <div className='bg-[#F5F5F5] p-[49px] rounded-sm relative'>
+                                <img src={releted.image} alt="" />
+                                <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm text-center absolute top-3 left-3'>
+                                    <span className='text-[#FAFAFA] text-[12px] leading-[18px] font-popins'>-{releted.discount}%</span>
+                                </div>
+                            </div>
+                            <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>
+                                <Link to="/product/details">{releted.name}</Link>
+                            </h3>
+                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3 pt-2 pb-2'>
+                                <span className='text-[#DB4444]'>${releted.dprice}</span> 
+                                <del className='text-[rgba(0,0,0,0.5)]'>${releted.price}</del>
+                            </p>
+                            <div className='flex gap-1'>
+                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
+                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
+                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
+                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
+                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
+                                <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>({releted.rating})</span>
+                            </div>
+                        </div>
+                    ))
+                }
+                
+            </div>
         </div>
     </section>
     </>
