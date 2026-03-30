@@ -129,7 +129,25 @@ const ProductDetails = () => {
                             }
                         </div>
                     </div>
-                    
+                    <div className='size flex items-center gap-6'>
+                        <div>
+                            <h3 className='font-inter font-normal text-[20px] leading-5 text-black'>Size:</h3>
+                        </div>
+                        <div className='flex gap-2'>
+                            {
+                                sizes.map(size => (
+                                    <div className='mt-1'>
+                                        <input type="radio" name='size' id={`size${size.id}`} className='hidden' />
+                                        <label htmlFor={`size${size.id}`} className='cursor-pointer'>
+                                            <span className='w-8 h-8 inline-block rounded-sm border border-[rgba(0,0,0,0.5)] text-center leading-[30px] font-popins font-medium text-[14px] text-black'>{size.name}</span>
+                                        </label>
+                                    </div>
+                                ))
+                            }
+                            
+                        </div>
+                    </div>
+
                     <div className='flex pt-6'>
                         <div className='w-[32%] h-11 flex'>
                             <div className='border border-[rgba(0,0,0,0.5)] h-11 w-10 flex justify-center items-center rounded-bl-sm rounded-tl-sm cursor-pointer' onClick={()=> setQuantity(quantity-1)}>
