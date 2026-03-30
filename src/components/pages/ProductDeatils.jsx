@@ -12,6 +12,7 @@ import { TiStarHalfOutline } from "react-icons/ti";
 import { Link } from 'react-router'
 import { FaMinus } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
+import { IoMdHeartEmpty } from "react-icons/io";
 import { GoPlus } from "react-icons/go";
 const ProductDetails = () => {
     let [quantity, setQuantity] = useState(1)
@@ -37,7 +38,7 @@ const ProductDetails = () => {
         {id:1, name:'HAVIT HV-G92 Gamepad', dprice:120, price:160, image:product1, rating:65, discount:40},
         {id:2, name:'AK-900 Wired Keyboard', dprice:960, price:1160, image:p2, rating:50, discount:20},
         {id:3, name:'IPS LCD Gaming Monitor', dprice:370, price:400, image:p3, rating:75, discount:10},
-        {id:4, name:'RGB liquid CPU Cooler', dprice:160, price:170, image:p4, rating:45, discount:15},
+        {id:4, name:'RGB liquid CPU Cooler', dprice:0, price:170, image:p4, rating:45, discount:0},
     ]
     const [previewImg, setPreviewImg] = useState(preview)
   return (
@@ -148,7 +149,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <div className='flex pt-6'>
+                    <div className='flex pt-6 items-center gap-4'>
                         <div className='w-[32%] h-11 flex'>
                             <div className='border border-[rgba(0,0,0,0.5)] h-11 w-10 flex justify-center items-center rounded-bl-sm rounded-tl-sm cursor-pointer' onClick={()=> setQuantity(quantity-1)}>
                                 <FaMinus className='text-[20px]' />
@@ -161,8 +162,14 @@ const ProductDetails = () => {
                             </div>
                             
                         </div>
-                        <div className='w-[45%]'></div>
-                        <div className='w-[10%]'></div>
+                        <div className='w-[45%]'>
+                            <a href="" className='font-popins text-[#FAFAFA] text-[16px] leading-6 font-medium bg-[#DB4444] text-center py-2.5 w-full inline-block rounded-sm'>Add to cart</a>
+                        </div>
+                        <div className='w-[10%]'>
+                            <div className='w-10 h-10 border border-[rgba(0,0,0,0.5)] rounded-sm flex justify-center items-center'>
+                                <IoMdHeartEmpty className='text-[32px] text-black'/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,16 +179,29 @@ const ProductDetails = () => {
                         <div className='product_item'>
                             <div className='bg-[#F5F5F5] p-[49px] rounded-sm relative'>
                                 <img src={releted.image} alt="" />
-                                <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm text-center absolute top-3 left-3'>
-                                    <span className='text-[#FAFAFA] text-[12px] leading-[18px] font-popins'>-{releted.discount}%</span>
-                                </div>
+                                {
+                                    releted.discount ? (
+                                        <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm text-center absolute top-3 left-3'>
+                                            <span className='text-[#FAFAFA] text-[12px] leading-[18px] font-popins'>-{releted.discount }%</span>
+                                        </div>
+                                    )
+                                    :
+                                    ''
+                                }
+                                
                             </div>
                             <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>
                                 <Link to="/product/details">{releted.name}</Link>
                             </h3>
                             <p className='font-popins font-medium text-[16px] leading-6 flex gap-3 pt-2 pb-2'>
-                                <span className='text-[#DB4444]'>${releted.dprice}</span> 
-                                <del className='text-[rgba(0,0,0,0.5)]'>${releted.price}</del>
+                                <span className='text-[#DB4444]'>${releted.dprice? releted.dprice : releted.price}</span> 
+                                {
+                                    releted.dprice ?
+                                    <del className='text-[rgba(0,0,0,0.5)]'>${releted.price}</del>
+                                    :
+                                    ''
+                                }
+                                
                             </p>
                             <div className='flex gap-1'>
                                 <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
