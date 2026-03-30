@@ -10,8 +10,24 @@ import p4 from '../../assets/images/p4.png'
 import { TiStarFullOutline } from "react-icons/ti";
 import { TiStarHalfOutline } from "react-icons/ti";
 import { Link } from 'react-router'
-
+import { FaMinus } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import { GoPlus } from "react-icons/go";
 const ProductDetails = () => {
+    let [quantity, setQuantity] = useState(1)
+    const colors = [
+        {id:1, bgcolor:'#A0BCE0'},
+        {id:2, bgcolor:'#E07575'},
+    ]
+    const sizes = [
+        {id:1, name:'XS'},
+        {id:2, name:'S'},
+        {id:3, name:'M'},
+        {id:4, name:'L'},
+        {id:5, name:'XL'},
+    
+    ]
+    const rating = 4;
     const gallery = [
         {thumbnail:gal1},
         {thumbnail:gal2},
@@ -28,7 +44,7 @@ const ProductDetails = () => {
     <>
     <section className='pt-[109px] pb-[58px]'>
         <div className="container">
-            <div className="flex">
+            <div className="flex gap-[70px]">
                 <div className="w-[60%]">
                     <div className="flex gap-[30px]">
                         <div className='flex w-[30%] flex-col gap-4 items-center'>
@@ -79,38 +95,60 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[40%]"></div>
-            </div>
-             <div className="grid grid-cols-4 gap-[30px] pt-15">
-                {
-                    releted_products.map(releted => (
-                        <div className='product_item'>
-                            <div className='bg-[#F5F5F5] p-[49px] rounded-sm relative'>
-                                <img src={releted.image} alt="" />
-                                <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm text-center absolute top-3 left-3'>
-                                    <span className='text-[#FAFAFA] text-[12px] leading-[18px] font-popins'>-{releted.discount}%</span>
-                                </div>
-                            </div>
-                            <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>
-                                <Link to="/product/details">{releted.name}</Link>
-                            </h3>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3 pt-2 pb-2'>
-                                <span className='text-[#DB4444]'>${releted.dprice}</span> 
-                                <del className='text-[rgba(0,0,0,0.5)]'>${releted.price}</del>
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>({releted.rating})</span>
-                            </div>
+                <div className="w-[40%]">
+                    <h3 className='font-inter font-semibold text-[24px] leading-6 text-black'>Havic HV G-92 Gamepad</h3>
+                    <div className='flex items-center gap-2 pt-4'> 
+
+                        <div className='flex gap-1 items-center'>
+                            {Array.from({ length: 5 }).map((_, i) => (
+                                <TiStarFullOutline
+                                key={i}
+                                className={i < rating ? "text-[#FFAD33] text-[18px]" : "text-[rgba(0,0,0,0.25)] text-[18px]"}
+                                />
+                            ))}
                         </div>
-                    ))
-                }
-                
+                        <span className='font-popins font-normal text-[14px] leading-[21px] text-[rgba(0,0,0,0.5)]'>(150 Reviews)</span>
+                    </div>
+                    <h4 className='pt-4 pb-6 font-inter font-normal text-[24px] leading-6 text-black'>$192.00</h4>
+                    <p className='font-popins font-normal text-[14px] leading-[21px] text-black pr-11 pb-6 border-b border-[rgba(0,0,0,0.5)]'>PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</p>
+
+                    <div className='color pt-6 flex items-center gap-6 pb-6'>
+                        <div>
+                            <h3 className='font-inter font-normal text-[20px] leading-5 text-black'>Colors:</h3>
+                        </div>
+                        <div className='flex gap-2'>
+                            {
+                                colors.map(color => (
+                                    <div className='mt-2'>
+                                        <input type="radio" name='color' id={`color${color.id}`} className='hidden' />
+                                        <label htmlFor={`color${color.id}`} className='cursor-pointer'>
+                                            <span style={{ backgroundColor: color.bgcolor }} className='w-5 h-5 inline-block bg-[${color.bgcolor}] rounded-full'></span>
+                                        </label>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    
+                    <div className='flex pt-6'>
+                        <div className='w-[32%] h-11 flex'>
+                            <div className='border border-[rgba(0,0,0,0.5)] h-11 w-10 flex justify-center items-center rounded-bl-sm rounded-tl-sm cursor-pointer' onClick={()=> setQuantity(quantity-1)}>
+                                <FaMinus className='text-[20px]' />
+                            </div>
+                            <div className='w-20 h-11 border-t border-b border-[rgba(0,0,0,0.5)] text-center'>
+                                <span className='leading-11 font-popins font-medium text-[20px] text-black'>{quantity}</span>
+                            </div>
+                            <div className='bg-[#DB4444] h-11 w-[41px] flex justify-center items-center rounded-br-sm rounded-tr-sm text-white cursor-pointer' onClick={()=> setQuantity(quantity+1)}>
+                                <GoPlus className='text-[24px]' />
+                            </div>
+                            
+                        </div>
+                        <div className='w-[45%]'></div>
+                        <div className='w-[10%]'></div>
+                    </div>
+                </div>
             </div>
+             
         </div>
     </section>
     </>
