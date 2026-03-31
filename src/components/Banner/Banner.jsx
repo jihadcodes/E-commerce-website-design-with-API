@@ -25,7 +25,7 @@ const SlideContent = () => (
         <div>
           <p className="flex items-center gap-2">
             
-              href=""
+             <a href=""
               className="text-[14px] xl:text-[16px] font-poppins font-medium leading-6 text-[#FAFAFA] pb-[3px] border-b border-[#FAFAFA]"
             >
               Shop Now
