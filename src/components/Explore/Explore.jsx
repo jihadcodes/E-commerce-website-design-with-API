@@ -34,7 +34,7 @@ const Wishlist = () => {
                   <p className='pb-2 font-poppins font-medium text-[14px] md:text-[16px] text-[#DB4444] leading-6'>
                     {item.price} <del className='ps-3 text-[#000000] opacity-50'>{item.old}</del>
                   </p>
-                  <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm absolute flex items-center top-3 left-3 justify-center'>
+                  <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm absolute flex items-center top-1 left-1 md:top-3 md:left-3 justify-center'>
                     <span className='font-poppins text-[12px] text-[#FAFAFA]'>{item.discount}</span>
                   </div>
                   <div className='w-[34px] h-[34px] bg-white rounded-full absolute flex items-center top-3 right-3 justify-center'>
