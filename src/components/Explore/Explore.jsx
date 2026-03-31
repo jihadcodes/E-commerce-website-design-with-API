@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { TiStarFullOutline } from "react-icons/ti";
 
 import px1 from '../../assets/images/px1.png'
@@ -11,154 +10,63 @@ import px6 from '../../assets/images/px6.png'
 import px7 from '../../assets/images/px7.png'
 import px8 from '../../assets/images/px8.png'
 
+const products = [
+  { img: px1, name: 'Breed Dry Dog Food', price: '$100' },
+  { img: px2, name: 'CANON EOS DSLR Camera', price: '$360' },
+  { img: px3, name: 'ASUS FHD Gaming Laptop', price: '$700' },
+  { img: px4, name: 'Curology Product Set', price: '$500' },
+  { img: px5, name: 'Kids Electric Car', price: '$960' },
+  { img: px6, name: 'Jr. Zoom Soccer Cleats', price: '$1160' },
+  { img: px7, name: 'GP11 Shooter USB Gamepad', price: '$660' },
+  { img: px8, name: 'Quilted Satin Jacket', price: '$660' },
+]
+
+const ProductCard = ({ img, name, price }) => (
+  <div className="item">
+    <div className="py-[35px] px-6 xl:px-10 bg-[#F5F5F5]">
+      <img className="mx-auto max-h-[150px] xl:max-h-none object-contain" src={img} alt={name} />
+    </div>
+    <h3 className="pt-4 pb-2 font-poppins font-medium text-[14px] xl:text-[16px] text-[#000000] leading-6">
+      {name}
+    </h3>
+    <div className="flex items-center gap-2">
+      <p className="font-poppins font-medium text-[14px] xl:text-[16px] text-[#DB4444] leading-6">
+        {price}
+      </p>
+      <div className="flex gap-[3px]">
+        {[...Array(5)].map((_, i) => (
+          <TiStarFullOutline key={i} className="text-[#FFAD33]" />
+        ))}
+      </div>
+    </div>
+  </div>
+)
+
 const Explore = () => {
   return (
-    <>
-    <section className=''>
-            <div className="container pb-[75px]">
-              <div className='pb-[88px] '>
-                <div className='text-center'>
-                    <h2 className=' block mx-auto font-inter font-semibold text-[36px] text-[#000000] leading-12 '>Explore Our Products</h2>
-                </div>
-              </div>
-              <div className="grid grid-cols-4 gap-[30px] ">
-                <div className="item  ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px1} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px2} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px3} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px4} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item  ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px5} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px6} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px7} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-                <div className="item ">
-                  <div className='py-[35px] px-10 bg-[#F5F5F5]  '>
-                    <img className='mx-auto' src={px8} alt="" />
-                  </div>
-                  <h3  className=' pt-4 pb-2 font-poppins font-medium text-[16px] text-[#000000] leading-6'>HAVIT HV-G92 Gamepad</h3>
-                  <div className="flex  items-center">
-                    <p className=' pe-2 font-poppins font-medium text-[16px] text-[#DB4444] leading-6'>$120</p>
-                  <div className="flex gap-[3px]">
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                    <TiStarFullOutline className='text-[#FFAD33]' />
-                  </div>
-                  </div>
-                </div>
-              </div>
-              <div className='pt-[102px] w-full '>
-                <div className="">
-                  <button  className='block  py-4 px-12 text-[#FAFAFA] bg-[#DB4444] font-poppins font-medium text-[16px] leading-6 mx-auto rounded-sm '>View All Products</button>
-                </div>
-              </div>
-            </div>
-        </section>
-    </>
+    <section>
+      <div className="container pb-16 xl:pb-[75px]">
+
+        <div className="pb-10 xl:pb-[88px]">
+          <h2 className="text-center font-inter font-semibold text-[24px] xl:text-[36px] text-[#000000] leading-tight xl:leading-12">
+            Explore Our Products
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-[30px]">
+          {products.map((product, index) => (
+            <ProductCard key={index} {...product} />
+          ))}
+        </div>
+
+        <div className="pt-16 xl:pt-[102px] w-full">
+          <button className="block py-3 xl:py-4 px-8 xl:px-12 text-[#FAFAFA] bg-[#DB4444] font-poppins font-medium text-[14px] xl:text-[16px] leading-6 mx-auto rounded-sm">
+            View All Products
+          </button>
+        </div>
+
+      </div>
+    </section>
   )
 }
 
