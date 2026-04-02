@@ -3,6 +3,7 @@ import Qrcode from '../../assets/images/Qrcode.png'
 import Gplay from '../../assets/images/gplay.png'
 import Appstore from '../../assets/images/appstore.png'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
+import { Link } from 'react-router'
 
 const Footer = () => {
   return (
@@ -13,9 +14,9 @@ const Footer = () => {
 
             {/* Exclusive */}
             <div className="col-span-2 md:col-span-3 xl:col-span-1">
-              <h3 className='pb-3 font-inter font-bold text-[22px] text-[#FAFAFA] tracking-wide'>
+              <Link to="/" className='pb-3 font-inter font-bold text-[22px] text-[#FAFAFA] tracking-wide cursor-pointer'>
                 Exclusive
-              </h3>
+              </Link>
               <p className='pb-2 font-poppins font-medium text-[15px] text-[rgba(255,255,255,0.6)] uppercase tracking-widest'>
                 Subscribe
               </p>
