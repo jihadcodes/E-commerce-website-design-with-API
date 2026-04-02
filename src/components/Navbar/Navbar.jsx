@@ -8,16 +8,15 @@ import { Link } from "react-router";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Scroll korle navbar-e shadow add hobe
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Menu open thakle body scroll band
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -121,14 +120,38 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile: Cart icon only (right side) */}
+            {/* Mobile: Search + Cart icons */}
             <div className="flex md:hidden gap-2">
+              <button
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="w-10 h-10 flex items-center justify-center rounded-xl border border-black/10 bg-gray-50 text-[20px] hover:bg-gray-100 transition-colors"
+                aria-label="Toggle search"
+              >
+                {searchOpen ? <HiX /> : <FiSearch />}
+              </button>
               <Link
                 to="/cart"
                 className="w-10 h-10 flex items-center justify-center rounded-xl border border-black/10 bg-gray-50 text-[20px] hover:bg-red-500 hover:text-white hover:border-red-500 transition-colors"
               >
                 <IoCartOutline />
               </Link>
+            </div>
+          </div>
+
+          {/* Mobile Search Bar — slide down */}
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+              searchOpen ? "max-h-20 opacity-100 pb-3" : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-full bg-[#F5F5F5] py-3 pl-4 pr-11 font-poppins text-[14px] rounded-xl outline-none focus:ring-2 focus:ring-red-200 transition"
+                autoFocus={searchOpen}
+              />
+              <FiSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]" />
             </div>
           </div>
         </div>
@@ -151,16 +174,6 @@ const Navbar = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-6">
-            {/* Search Bar */}
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search products..."
-                className="w-full bg-[#F5F5F5] py-3 pl-4 pr-11 font-poppins text-[14px] rounded-xl outline-none focus:ring-2 focus:ring-red-200 transition"
-              />
-              <FiSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]" />
-            </div>
-
             {/* Nav Links — Grid */}
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -204,7 +217,7 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Language selector — mobile */}
+            {/* Language selector */}
             <div className="border border-black/10 rounded-xl px-4 py-3 flex items-center justify-between">
               <span className="text-[14px] text-gray-500 font-poppins">Language</span>
               <div className="relative">
