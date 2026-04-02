@@ -19,7 +19,9 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
@@ -32,17 +34,28 @@ const Navbar = () => {
         }`}
       >
         {/* Top Bar */}
+        {/* Top Bar */}
         <div className="bg-black">
-          <div className="container flex items-center justify-between py-2.5 px-4">
+          <div className="container flex items-center py-2.5 px-4">
+            {/* Left spacer — desktop only, balances the select on the right */}
+            <div className="hidden md:block w-24" />
+
+            {/* Center text */}
             <div className="flex-1 flex justify-center">
               <p className="font-poppins text-[12px] md:text-[13px] text-white text-center">
-                Summer Sale For All Swim Suits And Free Express Delivery — OFF 50%!{" "}
-                <a href="" className="font-semibold underline ml-1 whitespace-nowrap">
+                Summer Sale For All Swim Suits And Free Express Delivery — OFF
+                50%!{" "}
+                <a
+                  href=""
+                  className="font-semibold underline ml-1 whitespace-nowrap"
+                >
                   Shop Now
                 </a>
               </p>
             </div>
-            <div className="hidden md:flex items-center">
+
+            {/* Right: Language select — desktop only */}
+            <div className="hidden md:flex items-center w-24 justify-end">
               <div className="relative">
                 <select className="appearance-none pl-3 pr-7 py-1 bg-transparent text-white font-poppins text-[13px] outline-none cursor-pointer">
                   <option className="text-black">English</option>
@@ -67,8 +80,15 @@ const Navbar = () => {
             </button>
 
             {/* Logo */}
-            <Link to="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-              <img src={logo} className="w-[100px] md:w-[120px] cursor-pointer" alt="Logo" />
+            <Link
+              to="/"
+              className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0"
+            >
+              <img
+                src={logo}
+                className="w-[100px] md:w-[120px] cursor-pointer"
+                alt="Logo"
+              />
             </Link>
 
             {/* Desktop Nav Links */}
@@ -219,7 +239,9 @@ const Navbar = () => {
 
             {/* Language selector */}
             <div className="border border-black/10 rounded-xl px-4 py-3 flex items-center justify-between">
-              <span className="text-[14px] text-gray-500 font-poppins">Language</span>
+              <span className="text-[14px] text-gray-500 font-poppins">
+                Language
+              </span>
               <div className="relative">
                 <select className="appearance-none pl-2 pr-6 text-[14px] font-poppins font-medium outline-none bg-transparent cursor-pointer">
                   <option>English</option>
