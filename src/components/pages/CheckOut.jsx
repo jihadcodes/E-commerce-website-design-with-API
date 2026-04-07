@@ -1,5 +1,6 @@
 import React from 'react'
-
+import check1 from '../../assets/images/check1.png'
+import check2 from '../../assets/images/check2.png'
 
 const Checkout = () => {
   return (
@@ -40,7 +41,63 @@ const Checkout = () => {
                         <input type="email" className='w-full' />
                     </div>
                 </div>
-                
+                <div className="w-[60%]">
+                    <div className='w-[80%] flex flex-col gap-8'>
+                        <div className='flex justify-between items-center'>
+                            <div className='flex items-center gap-6'>
+                                <img src={check1} alt="" />
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>LCD Monitor</span>
+                            </div>
+                            <div>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>$650</span>
+                            </div>
+                        </div>
+                        <div className='flex justify-between items-center'>
+                            <div className='flex items-center gap-6'>
+                                <img src={check2} alt="" />
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>H1 Gamepad</span>
+                            </div>
+                            <div>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>$1100</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div className='flex items-center justify-between gap-6 border-b border-[rgba(0,0,0,0.4)] pb-4 pt-4'>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Subtotal:</span>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>$1750</span>
+                            </div>
+                            <div className='flex items-center justify-between gap-6 border-b border-[rgba(0,0,0,0.4)] pb-4 pt-4'>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Shipping:</span>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Free</span>
+                            </div>
+                            <div className='flex items-center justify-between gap-6 pb-4 pt-4'>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Total:</span>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>$1750</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div className='flex payment items-center gap-4 pb-8'>
+                                <input name='payment_method' className='hidden' id='stripe' type="radio" />
+                                <label className='font-popins text-[16px] leading-6 font-normal text-black cursor-pointer flex items-center gap-4' htmlFor="stripe">
+                                    <span className='w-6 h-6 inline-block rounded-full border border-black'></span>Stripe
+                                </label>
+                            </div>
+                            <div className='flex payment items-center gap-4 pb-8'>
+                                <input name='payment_method' className='hidden' id='cash' type="radio" />
+                                <label className='font-popins text-[16px] leading-6 font-normal text-black cursor-pointer flex items-center gap-4' htmlFor="cash">
+                                    <span className='w-6 h-6 inline-block rounded-full border border-black'></span>Cash on delivery
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='flex justify-between pt-8'>
+                        <input type="text" className='w-[60%] py-4 px-6 border border-[#000000] rounded-sm font-popins text-[16px] leading-6 font-normal text-[rgba(0,0,0,0.5)]' placeholder="Coupon Code" />
+                        <button className='bg-[#DB4444] py-4 px-12 font-popins font-medium text-[#FAFAFA] leading-6 rounded-sm'>Apply Coupon</button>
+                    </div>
+                    <div className='pt-12'>
+                        <button className='bg-[#DB4444] py-4 px-12 font-popins font-medium text-[#FAFAFA] leading-6 rounded-sm'>Place Order</button>
+                    </div>
+                </div>
             </div>
         </div>
         
