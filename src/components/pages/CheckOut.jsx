@@ -12,7 +12,7 @@ const Checkout = () => {
             <div className='pb-6 xl:pb-12'>
                 <h3 className='font-inter font-medium text-[24px] xl:text-[36px] leading-[30px] text-black'>Billing Details</h3>
             </div>
-            <div className="flex flex-col xl:flex-row gap-10 xl:gap-[173px]">
+            <div className="flex flex-col lg:flex-row gap-10 xl:gap-[173px]">
 
                 {/* Left — Billing Form */}
                 <div className="w-full xl:w-[40%] flex flex-col gap-6 xl:gap-8 [&>div>label]:font-popins [&>div>label]:text-[16px] [&>div>label]:text-[rgba(0,0,0,0.4)] [&>div>label]:font-normal [&>div>label]:leading-6 [&>div>input]:py-3 [&>div>input]:bg-[#F5F5F5] [&>div>input]:font-popins [&>div>input]:text-[16px] [&>div>input]:text-[rgba(0,0,0,0.4)] [&>div>input]:font-normal [&>div>input]:leading-6 [&>div>input]:outline-0 [&>div>input]:px-3 [&>div>input]:rounded-sm [&>div>input]:mt-2 [&>div>label>span]:text-[rgba(219,68,68,0.4)]">
