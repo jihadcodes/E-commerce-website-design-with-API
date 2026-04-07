@@ -1,54 +1,93 @@
 import React from 'react'
-import Jacket from '../../assets/images/jacket.png'
-import bag2 from '../../assets/images/bag2.png'
-import cooler2 from '../../assets/images/cooler2.png'
-import pad2 from '../../assets/images/pad2.png'
-import { BsTrash3 } from "react-icons/bs";
+import explore from '../../assets/images/explore.png'
+import { TiStarFullOutline } from "react-icons/ti";
 
-const Wishlist = () => {
+const products = [
+  { id: 1, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 2, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 3, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 4, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 5, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 6, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 7, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+  { id: 8, name: "CANON EOS DSLR Camera", price: 360, rating: 3, reviews: 88, image: explore },
+];
+
+const StarRating = ({ rating, total = 5 }) => {
+  return (
+    <div className='flex gap-[2px] sm:gap-1'>
+      {[...Array(total)].map((_, i) => (
+        <TiStarFullOutline
+          key={i}
+          className={`text-[16px] sm:text-[18px] md:text-[20px] ${
+            i < rating ? 'text-[#FFAD33]' : 'text-[rgba(0,0,0,0.5)]'
+          }`}
+        />
+      ))}
+    </div>
+  );
+};
+
+const ProductCard = ({ product }) => {
+  return (
+    <div className='product_item'>
+      <div className='bg-[#F5F5F5] p-[24px] sm:p-[36px] md:p-[49px] rounded-sm flex items-center justify-center'>
+        <img
+          src={product.image}
+          alt={product.name}
+          className='w-full max-w-[140px] sm:max-w-[160px] md:max-w-full object-contain'
+        />
+      </div>
+      <h3 className='font-popins font-medium text-[14px] sm:text-[15px] md:text-[16px] text-black leading-6 pt-3 md:pt-4'>
+        {product.name}
+      </h3>
+      <div className='flex flex-wrap items-center gap-1 sm:gap-2 pt-1 md:pt-2'>
+        <p className='font-popins font-medium text-[14px] md:text-[16px] leading-6'>
+          <span className='text-[#DB4444]'>${product.price}</span>
+        </p>
+        <StarRating rating={product.rating} />
+        <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[12px] sm:text-[13px] md:text-[14px] leading-[21px]'>
+          ({product.reviews})
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const Explore = () => {
   return (
     <>
       <section>
-        <div className="container">
-          <div className='pt-10 md:pt-20 pb-10 md:pb-20 px-4 xl:px-0'>
-            <p className='pb-8 md:pb-15 font-poppins font-normal text-[20px] leading-[26px] text-[#000000]'>Wishlist (4)</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px]">
+        <div className="container border-b border-[rgba(0,0,0,0.25)] pb-[60px] md:pb-[91px]">
 
-              {[
-                { img: Jacket, name: 'Quilted Satin Jacket', price: '$120', old: '$160', discount: '-35%' },
-                { img: bag2, name: 'Quilted Satin Jacket', price: '$120', old: '$160', discount: '-35%' },
-                { img: cooler2, name: 'Quilted Satin Jacket', price: '$120', old: '$160', discount: '-35%' },
-                { img: pad2, name: 'Quilted Satin Jacket', price: '$120', old: '$160', discount: '-35%' },
-              ].map((item, i) => (
-                <div key={i} className="item relative">
-                  <div className='py-[25px] md:py-[35px] px-6 md:px-10 bg-[#F5F5F5] rounded-sm'>
-                    <img
-                      className='mx-auto max-h-[120px] md:max-h-[180px] xl:max-h-none object-contain'
-                      src={item.img}
-                      alt={item.name}
-                    />
-                  </div>
-                  <h3 className='pt-4 pb-2 font-poppins font-medium text-[14px] md:text-[16px] text-[#000000] leading-6'>
-                    {item.name}
-                  </h3>
-                  <p className='pb-2 font-poppins font-medium text-[14px] md:text-[16px] text-[#DB4444] leading-6'>
-                    {item.price} <del className='ps-3 text-[#000000] opacity-50'>{item.old}</del>
-                  </p>
-                  <div className='w-[55px] h-[26px] bg-[#DB4444] rounded-sm absolute flex items-center top-1 left-1 md:top-3 md:left-3 justify-center'>
-                    <span className='font-poppins text-[12px] text-[#FAFAFA]'>{item.discount}</span>
-                  </div>
-                  <div className='w-[34px] h-[34px] bg-white rounded-full absolute flex items-center top-3 right-3 justify-center'>
-                    <BsTrash3 />
-                  </div>
-                </div>
-              ))}
-
-            </div>
+          {/* Section Title */}
+          <div className='pb-10 md:pb-[88px] text-center'>
+            <h3 className='font-inter text-[24px] sm:text-[30px] md:text-[36px] leading-tight md:leading-12 font-semibold text-black'>
+              Explore Our Products
+            </h3>
           </div>
+
+          {/* Product Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[16px] sm:gap-x-[20px] lg:gap-x-[30px] gap-y-[36px] md:gap-y-[60px] pb-[48px] md:pb-[76px]">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <div className='text-center'>
+            <a
+              href=""
+              className='inline-block font-popins text-[#FAFAFA] text-[14px] sm:text-[15px] md:text-[16px] leading-6 font-medium bg-[#DB4444] py-3 sm:py-4 px-8 sm:px-10 md:px-12 rounded-sm'
+            >
+              View All Products
+            </a>
+          </div>
+
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Wishlist
+export default Explore;
