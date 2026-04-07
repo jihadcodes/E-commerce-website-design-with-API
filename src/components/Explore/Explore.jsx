@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react'
 import explore from '../../assets/images/explore.png'
 import { TiStarFullOutline } from "react-icons/ti";
 import { TiStarHalfOutline } from "react-icons/ti";
+import { TiStarOutline } from "react-icons/ti";
 import axios from 'axios';
 
 const Explore = () => {
 
-     const [product,setProduct] = useState([])
+     const [products,setProducts] = useState([])
 
     useEffect(()=> {
         axios.get('https://dummyjson.com/products')
-        .then(res => setProduct(res.data.products))
+        .then(res => setProducts(res.data.products))
     }, [])
-    console.log(product);
+    
+    const [visibleCount, setVisibleCount] = useState(4);
     
 
   return (
@@ -23,161 +25,46 @@ const Explore = () => {
                     <h3 className='font-inter text-[36px] leading-12 font-semibold text-black'>Explore Our Products</h3>
                 </div>
                 <div className="grid grid-cols-4 gap-x-[30px] gap-y-[60px] pb-[76px]">
-                    <div className='product_item'>
+                    
+                   
+                   {products.slice(0, visibleCount).map((product) => (
+                    <div key={product.id} className='product_item'>
                         <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
+                            <img src={product.thumbnail} alt={product.title} />
                         </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
+                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>{product.title}</h3>
                         <div className='flex gap-2 pt-2'>
                             <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
+                                <span className='text-[#DB4444]'>${product.price.toFixed(2)}</span> 
                             </p>
                             <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
+
+                                {
+                                    Array.from({length: 5}, (_, i) => {
+                                        const rating = product.rating;
+                                        const fullstar = Math.floor(rating);
+                                        const halfstar = rating - fullstar >= 0.5;
+                                        if(i < fullstar) {
+                                            return <TiStarFullOutline key={i} className='text-[20px] text-[#FFAD33]' />
+                                        } else if(i === fullstar && halfstar) {
+                                            return <TiStarHalfOutline key={i} className='text-[20px] text-[#FFAD33]' />
+                                        } else {
+                                            return <TiStarOutline key={i} className='text-[20px] text-[rgba(0,0,0,0.5)]' />
+                                        }
+                                    })
+                                }
                             </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
+                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>({product.reviews.length})</span>
                         </div>
                     </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
-                    <div className='product_item'>
-                        <div className='bg-[#F5F5F5] p-[49px] rounded-sm'>
-                            <img src={explore} alt="" />
-                        </div>
-                        <h3 className='font-popins font-medium text-[16px] text-black leading-6 pt-4'>CANON EOS DSLR Camera</h3>
-                        <div className='flex gap-2 pt-2'>
-                            <p className='font-popins font-medium text-[16px] leading-6 flex gap-3'>
-                                <span className='text-[#DB4444]'>$360</span> 
-                            </p>
-                            <div className='flex gap-1'>
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[#FFAD33]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                                <TiStarFullOutline className='text-[20px] text-[rgba(0,0,0,0.5)]' />
-                            </div>
-                            <span className='font-popins font-semibold text-[rgba(0,0,0,0.5)] text-[14px] leading-[21px]'>(88)</span>
-                        </div>
-                    </div>
+                   ))}
                 </div>
                 <div className='text-center'>
-                    <a href="" className='font-popins text-[#FAFAFA] text-[16px] leading-6 font-medium bg-[#DB4444] py-4 px-12 rounded-sm'>View All Products</a>
+
+                    {visibleCount < products.length && (
+                     <button onClick={() => setVisibleCount(visibleCount + 8)} className='font-popins text-[#FAFAFA] text-[16px] leading-6 font-medium bg-[#DB4444] select-none cursor-pointer  py-4 px-12 rounded-sm'>Load More</button>
+                    )}
+                    
                 </div>
             </div>
         </section>
