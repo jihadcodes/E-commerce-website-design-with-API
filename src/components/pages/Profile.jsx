@@ -10,11 +10,11 @@ const Profile = () => {
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-[85px]">
 
                 {/* Sidebar */}
-                <div className="w-full lg:w-[20%] flex flex-row lg:flex-col gap-4 lg:gap-3 [*&>a]:text-[16px] [*&>a]:font-popins [*&>a]:font-medium [*&>a]:leading-6 [*&>a]:text-black">
-                    <a href="">My Account</a>
-                    <a href="">My Orders</a>
-                    <a href="">My WishList</a>
-                </div>
+                             <div className="w-full lg:w-[20%] flex flex-row lg:flex-col gap-3 [*&>a]:text-[16px] [*&>a]:font-popins [*&>a]:font-medium [*&>a]:leading-6 [*&>a]:text-black">
+                                 <a href="" className="flex-1 lg:flex-none text-center lg:text-left border lg:border-0 border-[rgba(0,0,0,0.2)] rounded-sm py-2 lg:py-0 hover:border-[#DB4444] hover:text-[#DB4444] duration-300">My Account</a>
+                                 <a href="" className="flex-1 lg:flex-none text-center lg:text-left border lg:border-0 border-[rgba(0,0,0,0.2)] rounded-sm py-2 lg:py-0 hover:border-[#DB4444] hover:text-[#DB4444] duration-300">My Orders</a>
+                                 <a href="" className="flex-1 lg:flex-none text-center lg:text-left border lg:border-0 border-[rgba(0,0,0,0.2)] rounded-sm py-2 lg:py-0 hover:border-[#DB4444] hover:text-[#DB4444] duration-300">My WishList</a>
+                             </div>
 
                 {/* Form */}
                 <div className="w-full lg:w-[80%] rounded-sm shadow-cart px-4 lg:px-20 pt-6 lg:pt-10 pb-8 lg:pb-14">
