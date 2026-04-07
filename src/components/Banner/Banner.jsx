@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const SlideContent = () => (
   <div className="slider bg-[rgb(0,0,0)]">
-    <div className="flex flex-col xl:flex-row min-h-[280px] xl:min-h-[unset]">
+    <div className="flex flex-col md:flex-row min-h-[280px] md:min-h-[unset]">
       <div className="w-full xl:w-[40%] pt-6 xl:pt-[58px] px-6 xl:ps-16 xl:pr-2 flex flex-col justify-center">
         <div className="flex items-center gap-3 xl:gap-6 pb-3 xl:pb-5">
           <img src={apple} alt="Apple" className="w-6 h-6 xl:w-auto xl:h-auto" />
