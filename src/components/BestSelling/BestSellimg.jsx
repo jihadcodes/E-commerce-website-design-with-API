@@ -7,13 +7,24 @@ import cooler from '../../assets/images/cooler.png'
 import desk from '../../assets/images/desk.png'
 
 const products = [
-  { img: coat, name: 'The north coat', price: '$120', old: '$160' },
-  { img: bag, name: 'Gucci duffle bag', price: '$960', old: '$1160' },
-  { img: cooler, name: 'RGB liquid CPU Cooler', price: '$160', old: '$170' },
-  { img: desk, name: 'Small BookSelf', price: '$360', old: '$400' },
+  { img: coat, name: 'The north coat', price: '$120', old: '$160', rating: 5 },
+  { img: bag, name: 'Gucci duffle bag', price: '$960', old: '$1160', rating: 4 },
+  { img: cooler, name: 'RGB liquid CPU Cooler', price: '$160', old: '$170', rating: 5 },
+  { img: desk, name: 'Small BookSelf', price: '$360', old: '$400', rating: 3 },
 ]
 
-const ProductCard = ({ img, name, price, old }) => (
+const StarRating = ({ rating, total = 5 }) => (
+  <div className="flex gap-[3px]">
+    {[...Array(total)].map((_, i) => (
+      <TiStarFullOutline
+        key={i}
+        className={i < rating ? 'text-[#FFAD33]' : 'text-[rgba(0,0,0,0.5)]'}
+      />
+    ))}
+  </div>
+)
+
+const ProductCard = ({ img, name, price, old, rating }) => (
   <div className="item">
     <div className="py-[35px] px-6 xl:px-10 bg-[#F5F5F5]">
       <img className="mx-auto max-h-[180px] xl:max-h-none object-contain" src={img} alt={name} />
@@ -24,11 +35,7 @@ const ProductCard = ({ img, name, price, old }) => (
     <p className="pb-2 font-poppins font-medium text-[14px] xl:text-[16px] text-[#DB4444] leading-6">
       {price} <del className="ps-2 xl:ps-3 text-[#000000] opacity-50">{old}</del>
     </p>
-    <div className="flex gap-[3px]">
-      {[...Array(5)].map((_, i) => (
-        <TiStarFullOutline key={i} className="text-[#FFAD33]" />
-      ))}
-    </div>
+    <StarRating rating={rating} />
   </div>
 )
 
