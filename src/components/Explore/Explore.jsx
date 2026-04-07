@@ -61,9 +61,7 @@ const Explore = () => {
                 </div>
                 <div className='text-center'>
 
-                    {visibleCount < products.length && (
-                     <button onClick={() => setVisibleCount(visibleCount + 8)} className='font-popins text-[#FAFAFA] text-[16px] leading-6 font-medium bg-[#DB4444] select-none cursor-pointer  py-4 px-12 rounded-sm'>Load More</button>
-                    )}
+                   
                     
                 </div>
             </div>
