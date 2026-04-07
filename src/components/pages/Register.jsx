@@ -1,13 +1,13 @@
-import React from 'react'
+
 import login_img from "../../assets/images/login.png";
 import google from '../../assets/images/google.png'
 import { Link } from 'react-router';
 
-const SignUp = () => {
+const Register = () => {
   return (
     <>
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-center xl:justify-between mt-[40px] xl:mt-[107px] mb-[60px] xl:mb-[246px] gap-10 xl:gap-0 px-4 xl:px-0">
+        <div className="flex flex-col md:flex-row items-center justify-center xl:justify-between mt-10 xl:mt-[107px] mb-[60px] xl:mb-[246px] gap-10 xl:gap-0 px-4 xl:px-0">
           
           {/* Image */}
           <div className="hidden md:flex justify-center md:w-[45%] xl:w-auto">
@@ -54,4 +54,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Register
