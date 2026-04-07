@@ -127,7 +127,7 @@ const Navbar = () => {
                 {[
                   { icon: <IoHeartOutline />, to: "/wishlist" },
                   { icon: <IoCartOutline />, to: "/cart" },
-                  { icon: <FiUser />, to: "/account" },
+                  { icon: <FiUser />, to: "/profile" },
                 ].map(({ icon, to }, i) => (
                   <Link
                     key={i}
