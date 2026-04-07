@@ -74,7 +74,29 @@ const Cart = () => {
             <a href="" className='font-popins text-[16px] text-black leading-6 font-medium border border-[rgba(0,0,0,0.5)] rounded-sm py-4 px-12 hover:bg-[#DB4444] duration-500 hover:text-white hover:border-[#DB4444]'>Update Cart</a>
           </div>
 
-         
+          {/* Cart Total */}
+          <div className='flex justify-end pt-28'>
+            <div className='w-[470px] border border-[#000000] px-[22px] pt-8 pb-12 rounded-sm'>
+              <h3 className='font-popins font-medium text-[20px] leading-7 text-[#000000] pb-6'>Cart Total</h3>
+
+              <div className='flex justify-between font-popins text-[16px] text-black leading-6 font-normal py-4 border-b border-[rgba(0,0,0,0.4)]'>
+                <span>Subtotal:</span>
+                <span>$1200</span>
+              </div>
+              <div className='flex justify-between font-popins text-[16px] text-black leading-6 font-normal py-4 border-b border-[rgba(0,0,0,0.4)]'>
+                <span>Shipping:</span>
+                <span>Free</span>
+              </div>
+              <div className='flex justify-between font-popins text-[16px] text-black leading-6 font-normal py-4'>
+                <span>Total:</span>
+                <span>$1200</span>
+              </div>
+
+              <div className='pt-8 text-center'>
+                <Link to="/checkout" className='font-popins text-[16px] text-white leading-6 font-medium rounded-sm py-4 px-12 bg-[#DB4444]'>Procees to checkout</Link>
+              </div>
+            </div>
+          </div>
 
         </div>
       </section>
