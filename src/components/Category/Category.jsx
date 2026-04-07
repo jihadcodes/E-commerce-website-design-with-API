@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import phone from '../../assets/images/phone.png'
 import monitor from '../../assets/images/monitor.png'
 import watch from '../../assets/images/watch.png'
 import camera from '../../assets/images/camera.png'
 import headphone from '../../assets/images/headphone.png'
 import gamepad from '../../assets/images/gamepad.png'
+import axios from 'axios'
 
 const categories = [
   { img: phone, label: 'Phones' },
@@ -16,6 +17,9 @@ const categories = [
 ]
 
 const Category = () => {
+
+
+
   return (
     <section className="pt-12 xl:pt-20">
       <div className="container pb-16 xl:pb-[130px] border-b border-[rgba(0,0,0,0.3)]">
