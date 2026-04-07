@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import check1 from '../../assets/images/check1.png'
 import check2 from '../../assets/images/check2.png'
 
 const Checkout = () => {
+  const [paymentMethod, setPaymentMethod] = useState('')
+
   return (
     <>
     <section className='pt-[181px] pb-[188px]'>
@@ -76,17 +78,27 @@ const Checkout = () => {
                             </div>
                         </div>
                         <div>
-                            <div className='flex payment items-center gap-4 pb-8'>
-                                <input name='payment_method' className='hidden' id='stripe' type="radio" />
-                                <label className='font-popins text-[16px] leading-6 font-normal text-black cursor-pointer flex items-center gap-4' htmlFor="stripe">
-                                    <span className='w-6 h-6 inline-block rounded-full border border-black'></span>Stripe
-                                </label>
+                            <div
+                                className='flex items-center gap-4 pb-8 cursor-pointer'
+                                onClick={() => setPaymentMethod('stripe')}
+                            >
+                                <span className={`w-6 h-6 inline-flex items-center justify-center rounded-full border border-black`}>
+                                    {paymentMethod === 'stripe' && (
+                                        <span className='w-3 h-3 rounded-full bg-black inline-block'></span>
+                                    )}
+                                </span>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Stripe</span>
                             </div>
-                            <div className='flex payment items-center gap-4 pb-8'>
-                                <input name='payment_method' className='hidden' id='cash' type="radio" />
-                                <label className='font-popins text-[16px] leading-6 font-normal text-black cursor-pointer flex items-center gap-4' htmlFor="cash">
-                                    <span className='w-6 h-6 inline-block rounded-full border border-black'></span>Cash on delivery
-                                </label>
+                            <div
+                                className='flex items-center gap-4 pb-8 cursor-pointer'
+                                onClick={() => setPaymentMethod('cash')}
+                            >
+                                <span className={`w-6 h-6 inline-flex items-center justify-center rounded-full border border-black`}>
+                                    {paymentMethod === 'cash' && (
+                                        <span className='w-3 h-3 rounded-full bg-black inline-block'></span>
+                                    )}
+                                </span>
+                                <span className='font-popins text-[16px] leading-6 font-normal text-black'>Cash on delivery</span>
                             </div>
                         </div>
                     </div>
@@ -100,7 +112,6 @@ const Checkout = () => {
                 </div>
             </div>
         </div>
-        
     </section>
     </>
   )
