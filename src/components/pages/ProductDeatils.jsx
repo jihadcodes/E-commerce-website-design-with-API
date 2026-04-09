@@ -38,7 +38,7 @@ const ProductDetails = () => {
       
     )
     
-  })
+  },[])
   
   
 
@@ -97,7 +97,7 @@ const ProductDetails = () => {
                   ))}
                 </div>
                 {/* Preview */}
-                <div className="bg-[#F5F5F5] flex items-center py-3 px-6 rounded-sm">
+                <div className="bg-[#F5F5F5] w-[70%] flex items-center py-3 px-6 rounded-sm">
                   <img src={previewImg} alt="" />
                 </div>
               </div>
