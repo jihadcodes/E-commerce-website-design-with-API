@@ -27,7 +27,7 @@ const CategoryProducts = () => {
         <div className="container border-b border-[rgba(0,0,0,0.25)] pb-[91px]">
           <div className="pb-[88px] pt-20 ">
             <h3 className="font-inter text-[36px] leading-12 font-semibold text-black">
-              Explore Our Products: 
+              {slug.charAt(0).toUpperCase() + slug.slice(1)}
             </h3>
           </div>
           <div className="grid grid-cols-4 gap-x-[30px] gap-y-[60px] pb-[76px]">

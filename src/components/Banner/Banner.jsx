@@ -52,16 +52,16 @@ const SlideContent = () => (
 );
 
 const Banner = () => {
-  const [categories, setCategories] = useState([]);
+ const [categories, setCategories] = useState([]);
+  
 
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/products/category-list")
+    axios.get("https://dummyjson.com/products/categories")
       .then((response) => {
         setCategories(response.data);
       });
-  },[]);
-  
+  }, []);
+
 
   const settings = {
     infinite: true,
@@ -78,10 +78,9 @@ const Banner = () => {
         <div className="flex flex-col xl:flex-row gap-0 xl:gap-[45px]">
           {/* Category Sidebar — hidden on mobile, visible on xl */}
           <div className="hidden xl:flex w-[20%] category pt-10 flex-col border-r border-[rgba(0,0,0,0.25)] gap-4">
-            <Link href="">Woman's Fashion</Link>
-            {categories.slice(0, 9).map((cat, index) => (
-              <Link key={index} href="" className="capitalize">
-                {cat}
+            {categories.slice(0, 9).map(category => (
+              <Link to={`/category/product/${category.slug}`}>
+                {category.name}
               </Link>
             ))}
           </div>
