@@ -13,6 +13,7 @@ import Register from './components/pages/Register.jsx';
 import CheckOut from './components/pages/CheckOut.jsx';
 import ProductDetails from './components/pages/ProductDeatils.jsx';
 import Profile from './components/pages/Profile.jsx';
+import CategoryProducts from './components/CategoryProducts/CategoryProducts.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/checkout", Component: CheckOut },
       { path: "/productdetails/:id", Component: ProductDetails },
       { path: "/profile", Component: Profile },
+      { path: "category/product/:slug", Component: CategoryProducts },
       
     ],
   },

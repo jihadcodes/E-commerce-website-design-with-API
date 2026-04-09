@@ -6,14 +6,14 @@ import camera from "../../assets/images/camera.png";
 import headphone from "../../assets/images/headphone.png";
 import gamepad from "../../assets/images/gamepad.png";
 import axios from "axios";
+import { Link } from "react-router";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
   
 
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/products/category-list")
+    axios.get("https://dummyjson.com/products/categories")
       .then((response) => {
         setCategories(response.data);
       });
@@ -33,17 +33,19 @@ const Category = () => {
           
           className="grid grid-cols-3 xl:grid-cols-6 gap-3 xl:gap-[30px]"
         >
-          {categories.slice(0, 6).map((cat, index) => (
-            <div key={index.id} className="item pt-4 xl:pt-[25px] px-4 xl:px-[57px] border border-[rgba(0,0,0,0.3)] rounded-sm flex flex-col items-center">
+          {categories.slice(0, 6).map(category => (
+            <Link to={`/category/product/${category.slug}`}>
+            <div className="item pt-4 xl:pt-[25px] px-4 xl:px-[57px] border border-[rgba(0,0,0,0.3)] rounded-sm flex flex-col items-center">
               <img
                 src={phone}
                 alt="Phones"
                 className="pb-3 xl:pb-4 w-10 xl:w-auto mx-auto"
               />
-              <p className="pb-4 xl:pb-6 font-poppins font-normal text-[13px] xl:text-[16px] leading-6 text-[#000000] text-center capitalize ">
-                {cat}
-              </p>
+              <a className="pb-4 xl:pb-6 font-poppins font-normal text-[13px] xl:text-[16px] leading-6 text-[#000000] text-center capitalize ">
+                {category.name}
+              </a>
             </div>
+            </Link>
           ))}
         </div>
       </div>
