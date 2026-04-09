@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import preview from "../../assets/images/cons.png";
 import gal1 from "../../assets/images/cons.png";
 import gal2 from "../../assets/images/con1.png";
@@ -8,16 +8,30 @@ import p2 from "../../assets/images/p2.png";
 import p3 from "../../assets/images/p3.png";
 import p4 from "../../assets/images/p4.png";
 import { TiStarFullOutline } from "react-icons/ti";
-import { Link } from "react-router";
+import { TiStarHalfOutline } from "react-icons/ti";
+import { TiStarOutline } from "react-icons/ti";
+import { Link, useParams } from "react-router";
 import { FaMinus } from "react-icons/fa6";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { GoPlus } from "react-icons/go";
+import axios from "axios";
 
 const ProductDetails = () => {
+  const {id} =useParams()
   const [quantity, setQuantity] = useState(1)
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedColor, setSelectedColor] = useState(null)
   const [previewImg, setPreviewImg] = useState(preview)
+
+  const [Prdetails, setPrDetails] = useState({})
+
+  useEffect(()=> {
+    axios.get(`https://dummyjson.com/products/${id}`)
+    .then(details => setPrDetails(details.data))
+    
+  })
+  
+  console.log();
 
   const handleQuantityDecrease = () => {
     if (quantity > 1) setQuantity(quantity - 1)
@@ -36,7 +50,7 @@ const ProductDetails = () => {
     { id: 5, name: "XL" },
   ]
 
-  const rating = 4
+
 
   const gallery = [
     { thumbnail: gal1 },
@@ -87,7 +101,7 @@ const ProductDetails = () => {
               {/* Description */}
               <div className="pt-[92px]">
                 <h3 className="font-popins font-semibold text-[36px] leading-10 text-[#111827] pb-4">
-                  Havic HV G-92 Gamepad
+                  {Prdetails.title}
                 </h3>
                 <p className="font-popins font-normal text-[16px] text-[#4B5563] leading-6 pb-10">
                   The St. Louis Meramec Canoe Company was founded by Alfred Wickett in 1922. Wickett had previously worked for the Old Town Canoe Co from 1900 to 1914. Manufacturing of the classic wooden canoes in Valley Park, Missouri ceased in 1978.
@@ -111,22 +125,45 @@ const ProductDetails = () => {
             {/* Right */}
             <div className="w-[40%]">
               <h3 className="font-inter font-semibold text-[24px] leading-6 text-black">
-                Havic HV G-92 Gamepad
+              {Prdetails.title}
               </h3>
               <div className="flex items-center gap-2 pt-4">
                 <div className="flex gap-1 items-center">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <TiStarFullOutline
-                      key={i}
-                      className={i < rating ? "text-[#FFAD33] text-[18px]" : "text-[rgba(0,0,0,0.25)] text-[18px]"}
-                    />
-                  ))}
+                  {Array.from({ length: 5 }, (_, i) => {
+                                        const rating = Prdetails.rating;
+                                        const fullstar = Math.floor(rating);
+                                        const halfstar = rating - fullstar >= 0.5;
+                                        if (i < fullstar) {
+                                          return (
+                                            <TiStarFullOutline
+                                              key={i}
+                                              className="text-[20px] text-[#FFAD33]"
+                                            />
+                                          );
+                                        } else if (i === fullstar && halfstar) {
+                                          return (
+                                            <TiStarHalfOutline
+                                              key={i}
+                                              className="text-[20px] text-[#FFAD33]"
+                                            />
+                                          );
+                                        } else {
+                                          return (
+                                            <TiStarOutline
+                                              key={i}
+                                              className="text-[20px] text-[rgba(0,0,0,0.5)]"
+                                            />
+                                          );
+                                        }
+                                      })}
                 </div>
                 <span className="font-popins font-normal text-[14px] leading-[21px] text-[rgba(0,0,0,0.5)]">
-                  (150 Reviews)
+                  ({Prdetails.reviews.length} Reviews)
+                  
+                  
                 </span>
               </div>
-              <h4 className="pt-4 pb-6 font-inter font-normal text-[24px] leading-6 text-black">$192.00</h4>
+              <h4 className="pt-4 pb-6 font-inter font-normal text-[24px] leading-6 text-black">${Prdetails.price}</h4>
               <p className="font-popins font-normal text-[14px] leading-[21px] text-black pr-11 pb-6 border-b border-[rgba(0,0,0,0.5)]">
                 PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.
               </p>
