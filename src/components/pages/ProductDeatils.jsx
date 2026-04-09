@@ -22,16 +22,25 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedColor, setSelectedColor] = useState(null)
   const [previewImg, setPreviewImg] = useState(preview)
+  const [gallery, setGallery] = useState([])
 
   const [Prdetails, setPrDetails] = useState({})
+  const [tag, setTag] = useState([])
 
   useEffect(()=> {
     axios.get(`https://dummyjson.com/products/${id}`)
-    .then(details => setPrDetails(details.data))
+    .then(details => {
+      setPrDetails(details.data)
+      setTag(details.data.tags)
+      setPreviewImg(details.data.thumbnail)
+      setGallery(details.data.images.map(img => ({thumbnail: img})))
+    }
+      
+    )
     
   })
   
-  console.log();
+  
 
   const handleQuantityDecrease = () => {
     if (quantity > 1) setQuantity(quantity - 1)
@@ -52,12 +61,7 @@ const ProductDetails = () => {
 
 
 
-  const gallery = [
-    { thumbnail: gal1 },
-    { thumbnail: gal2 },
-    { thumbnail: gal3 },
-  ]
-
+ 
   const releted_products = [
     { id: 1, name: "HAVIT HV-G92 Gamepad", dprice: 120, price: 160, image: product1, rating: 65, discount: 40 },
     { id: 2, name: "AK-900 Wired Keyboard", dprice: 960, price: 1160, image: p2, rating: 50, discount: 20 },
@@ -104,18 +108,18 @@ const ProductDetails = () => {
                   {Prdetails.title}
                 </h3>
                 <p className="font-popins font-normal text-[16px] text-[#4B5563] leading-6 pb-10">
-                  The St. Louis Meramec Canoe Company was founded by Alfred Wickett in 1922. Wickett had previously worked for the Old Town Canoe Co from 1900 to 1914. Manufacturing of the classic wooden canoes in Valley Park, Missouri ceased in 1978.
+                  {Prdetails.description}
                 </p>
                 <h4 className="font-popins font-semibold text-[24px] leading-8 text-[#4B5563] pb-10">Features</h4>
                 <p className="font-popins font-normal text-[16px] text-[#4B5563] leading-6 pb-10">
-                  The St. Louis Meramec Canoe Company was founded by Alfred Wickett in 1922. Wickett had previously worked for the Old Town Canoe Co from 1900 to 1914. Manufacturing of the classic wooden canoes in Valley Park, Missouri ceased in 1978.
+                 {Prdetails.description}
                 </p>
                 <h4 className="font-popins font-semibold text-[24px] leading-8 text-[#4B5563]">Keywords</h4>
                 <div className="pt-4 flex gap-2 flex-wrap">
-                  {['men\'s fashion', 'gaming', 'electronics', 'accessories'].map((keyword, i) => (
-                    <a key={i} href="" className="flex gap-1 items-center font-popins text-[12px] text-[#4B5563] font-normal leading-4 border border-[#E5E7EB] rounded-[9999px] py-2 px-3.5">
+                  {tag.map(tag  => (
+                    <a  href="" className="flex gap-1 items-center font-popins text-[12px] text-[#4B5563] font-normal leading-4 border border-[#E5E7EB] rounded-[9999px] py-2 px-3.5">
                       <KeywordSVG />
-                      {keyword}
+                      {tag}
                     </a>
                   ))}
                 </div>
@@ -158,14 +162,14 @@ const ProductDetails = () => {
                                       })}
                 </div>
                 <span className="font-popins font-normal text-[14px] leading-[21px] text-[rgba(0,0,0,0.5)]">
-                  ({Prdetails.reviews.length} Reviews)
+                  ({Prdetails.reviews?.length} Reviews)
                   
                   
                 </span>
               </div>
               <h4 className="pt-4 pb-6 font-inter font-normal text-[24px] leading-6 text-black">${Prdetails.price}</h4>
               <p className="font-popins font-normal text-[14px] leading-[21px] text-black pr-11 pb-6 border-b border-[rgba(0,0,0,0.5)]">
-                PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.
+                {Prdetails.description}
               </p>
 
               {/* Colors */}
